@@ -8,6 +8,8 @@ using namespace std;
 int _tmain(int argc, _TCHAR* argv[])
 {
 	cout << "Hello Group" << endl;
+	cout << "Haoran testing github" << endl;
+
 	string x;
 	do{
 		cout << "Type bye to exit: ";
