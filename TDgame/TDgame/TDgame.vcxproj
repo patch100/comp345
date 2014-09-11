@@ -69,12 +69,20 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Critter.cpp" />
+    <ClCompile Include="Grid.cpp" />
+    <ClCompile Include="Logic.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MapEditor.cpp" />
+    <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="Tower.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Critter.h" />
+    <ClInclude Include="Grid.h" />
+    <ClInclude Include="Logic.h" />
+    <ClInclude Include="MapEditor.h" />
+    <ClInclude Include="Menu.h" />
     <ClInclude Include="Projectile.h" />
     <ClInclude Include="Tower.h" />
   </ItemGroup>
