@@ -28,6 +28,9 @@ Logic::~Logic()
 void Logic::calculate()
 {
 	
+	//HERE IS WHERE CRITTER FACTORY WOULD GO, DO AN IF to check if there are still any number of critters to be created
+	
+	
 	//Moves the towers, moves the critters, move the projectiles, calculate everything. does a loop;
 	//Iterates each object in the vectors, and calculates their movement
 	for (vector<Projectile>::iterator p = projectiles.begin(); p != projectiles.end(); ++p)
@@ -87,4 +90,11 @@ void Logic::endLevel()
 	//Delete all projectiles
 	//Wait for Mouse Click Event to start level again;
 }
+
+
+void Logic::frame()
+{
+	calculate();
+	render();
 	
+}
