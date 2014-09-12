@@ -11,6 +11,11 @@ Logic::Logic(int ** grid, int startRow, int startColumn, int endRow, int endColu
 
 	endX = endRow;
 	endY = endColumn;
+	
+	money = 10;
+	currentLevel = 0;
+	
+	
 
 }
 
