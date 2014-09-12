@@ -1,4 +1,6 @@
 #pragma once
+#include <grid.h>
+
 class MapEditor
 {
 public:
@@ -11,10 +13,13 @@ public:
 	//either way, it has to first draw a grid, and then be made to pass these values into the logic object.
 	//After that, it's useless.
 	
-	//the method for drawing the grid for both the map editor and the game can be the same, but it's hard to think of how
-	//to reuse that without creating a new class, which takes work...
+	//we can use a public method "drawGrid" to draw the grid for both the map editor, as well as for the game itself;
+	//it will take a grid.
 	
 	MapEditor();
 	~MapEditor();
+	
+	
+	void drawGrid(Grid grid);
 };
 
