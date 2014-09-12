@@ -33,6 +33,11 @@ void Logic::calculate()
 	
 	//Moves the towers, moves the critters, move the projectiles, calculate everything. does a loop;
 	//Iterates each object in the vectors, and calculates their movement
+	
+	//There's an issue how to pass the different arrays, because sometimes individual objects will need to iterate
+	//through the array
+	//maybe static pointers to the arrays?
+	
 	for (vector<Projectile>::iterator p = projectiles.begin(); p != projectiles.end(); ++p)
 	{
 		p->calculate();
