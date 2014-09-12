@@ -49,7 +49,7 @@ void Logic::calculate()
 	}
 
 	
-
+	//HERE IS WHERE TO HANDLE THE MOUSE CLICK EVENTS, LIKE BUYING TOWERS, SELLING TOWERS, ETC;
 
 
 }
@@ -94,7 +94,14 @@ void Logic::endLevel()
 
 void Logic::frame()
 {
+	// if there is no more lives, then end the game
+	// if there is no more critters, the end the level endLevel();
+	
 	calculate();
 	render();
+	
+	
+	
+	
 	
 }
