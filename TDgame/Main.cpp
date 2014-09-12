@@ -21,11 +21,21 @@ int main(int argc, char* args[])
 
 	// Adding surface to window
 	screen = SDL_GetWindowSurface( window ); 
-
+	
+	
+	//Will need multiple SDL_Surface objects, each for each selection of the screen (2 at least)
+	
 	//Select Premade Map OR Create New Map (Load MapEditor);
-	//Either way, end with an double array, an X,Y for the start, and X,Y for the end (by grid, not by pixel), we pass this into the gameLogic.
-	//Also need a path finding algorithm
-	//Close MapEditor, start setting up the game;
+	
+	//Might have to pass the surface to draw on to creating the mapEditor()
+	
+	//MapEditor mapEditor();
+	//mapEditor.drawGrid();
+	//Wait for mouse click events, once the mouse click events are finished, and the grid is selected
+	// either by preselection, or creation, the mapEditor object will have the information we need;
+	
+
+	//OLD:
 
 	//int ** grid; // Place holders
 	//int startRow;
@@ -34,10 +44,16 @@ int main(int argc, char* args[])
 	//int endColumn;
 
 	//Create Logic that handles the towers, projectiles, levels, etc.
-	//Pass map information over:
-	//		Logic gameLogic(grid, startRow, startColumn, endRow, endColumn);
-
+	//Pass map information over: actually, we can just let the logic object accept a grid instead of these variables;
+	//Logic gameLogic(grid, startRow, startColumn, endRow, endColumn); BAD
+	
+	//NEW: 
+	
+	//selectMap will return a Grid object;
+	//Logic gamelogic(mapEditor.selectMap(), pass the surface to draw on);
 	//Mouse Event to start
+	
+	
 	//Game Starts. Allow for pausing at the end of every level;
 
 	//End Game WIN, LOSE, TRY AGAIN?
