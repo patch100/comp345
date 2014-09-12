@@ -29,7 +29,9 @@ public:
 	//Start the level, creates the critters;
 	void startLevel();
 
-
+	//Generates each frame;
+	void frame();
+	
 	// Vectors for tower, projectile and critter
 	vector <Tower> towers;
 	vector <Projectile> projectiles;
