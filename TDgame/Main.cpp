@@ -3,7 +3,15 @@
 #include <stdio.h>
 #include "Logic.h"
 #include "MapEditor.h"
+#include "RenderObject.h"
+#include "GameEngine.h"
 
+namespace  start{
+	SDL_Window * returnWindow(SDL_Window* win){
+		return win;
+
+	}
+}
 int main(int argc, char* args[])
 {
 
@@ -20,24 +28,48 @@ int main(int argc, char* args[])
 	//WINDOW WILL BE THE DRAWING SURFACE;
 	SDL_Window * window = SDL_CreateWindow("Tower Defense",	SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, 0);
 
+	
 	//RENDERER is what makes images;
 	SDL_Renderer * renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
-	SDL_Surface * top_menu = SDL_LoadBMP("top_menu.bmp");
-	SDL_Texture * top_menu_texture = SDL_CreateTextureFromSurface(renderer,
-		top_menu);
 
-	SDL_FreeSurface(top_menu);
-	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-	SDL_RenderClear(renderer);
+	///MOVING EVERYTHING DOWN TO GAMEENGINE
+	GameEngine * gameEngine = new GameEngine(renderer);
 
-	SDL_Rect dstrect1 = { 0,0, 884, 84 };
+	//GAMEENGINE PHASE1, which is RENDERING EVERYTHING (note, doing from .bmp or .png to surface takes time, this is why we need to render everything first)
+	//GAMEENGINE PHASE2, which is map selection
+	//GAMEENGINE PHASE3, which is the playing of the game
+	//GAMENEGINE PHASE4, REPEAT, GAMEOVER, ETC;
 
-	SDL_RenderCopy(renderer, top_menu_texture, NULL, &dstrect1);
-	SDL_RenderPresent(renderer);
+
+
+
+	//Create a menu item, which holds all the menus, as well as text to render (tower info, etc)
+
+	//Top menu bar
+	//SDL_Surface * top_menu = SDL_LoadBMP("top_menu.bmp");
+	//SDL_Texture * top_menu_texture = SDL_CreateTextureFromSurface(renderer,
+		//top_menu);
+
+	//SDL_FreeSurface(top_menu);
+
+	//Render set up
+	//SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+	//SDL_RenderClear(renderer);
+
+
+
+	//SDL_Rect dstrect1 = { 0,0, 884, 84 };
+
+	//SDL_RenderCopy(renderer, top_menu_texture, NULL, &dstrect1);
+
+	//Render once;
+	//SDL_RenderPresent(renderer);
+
+
 
 	//Create the map editor;
-	MapEditor mapEditor(window, renderer);
+
 
 	//HERE WE INSERT A SDL_EVENT, SO YOU HAVE TO PICK BETWEEN PRESELECTED, OR READY MADE;
 	//EVENT IS BASED ON MOUSE BUTTON X/Y POS; 
@@ -59,70 +91,25 @@ int main(int argc, char* args[])
 
 	}
 
-
-	mapEditor.drawGrid();
-	SDL_RenderCopy(renderer, top_menu_texture, NULL, &dstrect1);
-	SDL_RenderPresent(renderer);
-
-
-
-	//SDL_Surface * image = SDL_LoadBMP("spaceship.bmp");
-	//SDL_Texture * texture = SDL_CreateTextureFromSurface(renderer,
-		//image);
-	
 	
 
-	//SDL_Texture * overlap = SDL_CreateTextureFromSurface(renderer,		image);
+	quit = false;
 
-	//SDL_FreeSurface(image);
+	while (!quit)
+	{
+		SDL_WaitEvent(&event);
 
-	//SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+		switch (event.type)
+		{
+		case SDL_KEYDOWN:
+			quit = true;
+			break;
+		}
 
-	// handle events
+	}
+
 
 	
-	// cleanup SDL
-
-	
-	SDL_DestroyRenderer(renderer);
-	SDL_DestroyWindow(window);
-	SDL_Quit();
-	// Application Window
-	//SDL_Window* window = NULL; 
-
-	// Drawing Surface
-	//SDL_Surface* screen = NULL; 
-
-	//const int WIDTH = 1000;
-	//const int HEIGHT = 750;
-	// Creating Window, set size
-	//window = SDL_CreateWindow("Tower Defense Game", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 
-		//WIDTH, HEIGHT, SDL_WINDOW_SHOWN); 
-
-	//creating a renderer to test
-	//SDL_Renderer * renderer = SDL_CreateRenderer(window, -1, 0);
-	//SDL_Surface * image = SDL_LoadBMP("spaceship.png");
-	//SDL_Texture * texture = SDL_CreateTextureFromSurface(renderer,		image);
-
-	//SDL_FreeSurface(image);
-
-	//SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-
-	//SDL_Rect dstrect = { 10, 10, 64, 64 };
-
-	//SDL_RenderClear(renderer);
-	//SDL_RenderCopy(renderer, texture, NULL, &dstrect);
-	//SDL_RenderPresent(renderer);
-
-	// Adding surface to window
-	//screen = SDL_GetWindowSurface( window ); 
-	
-	//Check 1
-	//Will need multiple SDL_Surface objects, each for each selection of the screen (2 at least)
-	
-	//Select Premade Map OR Create New Map (Load MapEditor);
-	
-	//Might have to pass the surface to draw on to creating the mapEditor()
 	
 	//MapEditor mapEditor();
 	//mapEditor.drawGrid();
@@ -157,10 +144,10 @@ int main(int argc, char* args[])
 
 
 	
-	//SDL_DestroyTexture(texture);
-	//SDL_DestroyRenderer(renderer);
-	//SDL_DestroyWindow(window);
-	//SDL_Quit();
+
+
+	SDL_Quit();
+
 	return 0;
 
 }

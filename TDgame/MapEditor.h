@@ -17,20 +17,24 @@ public:
 	//we can use a public method "drawGrid" to draw the grid for both the map editor, as well as for the game itself;
 	//it will take a grid.
 	
-	MapEditor(SDL_Window * window,SDL_Renderer * renderer);
+	MapEditor(SDL_Renderer * renderer);
 	~MapEditor();
 	
 	
 	void drawGrid();
 
-	SDL_Window * window;
-	SDL_Renderer * renderer;
+	//CONSTANTS, VALUES IN PIXELS, FORMATTING AND SIZE
 
 	const int MAP_PADDING_LEFT = 10;
 
 	const int MAP_PADDING_TOP = 100;
 	
 	const int GRID_SIDE = 25;
+
+	//MAP GRID SIZE
+	const int ROW_SIZE = 25;
+
+	const int COLUMN_SIZE = 25;
 
 	//Every image needs a surface to load the image, and then a texture, which is the image rendered.
 	//So we need one for empty grid (towers only), and critter grid
@@ -41,10 +45,10 @@ public:
 	SDL_Texture * crittergrid_texture;
 
 
-	
+	SDL_Renderer * renderer;
 
 	//the grid object;
-	Grid * grid;
+	Grid * gridObject;
 
 
 };
