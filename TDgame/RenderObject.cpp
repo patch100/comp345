@@ -3,7 +3,7 @@
 
 RenderObject::RenderObject(SDL_Renderer * renderer)
 {
-	
+	this->renderer = renderer;
 }
 
 
