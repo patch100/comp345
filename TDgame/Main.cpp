@@ -61,8 +61,8 @@ int main(int argc, char* args[])
 
 
 	mapEditor.drawGrid();
-
-
+	SDL_RenderCopy(renderer, top_menu_texture, NULL, &dstrect1);
+	SDL_RenderPresent(renderer);
 
 
 

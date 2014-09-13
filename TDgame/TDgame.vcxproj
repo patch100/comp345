@@ -70,6 +70,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Critter.cpp" />
+    <ClCompile Include="CritterFactory.cpp" />
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="Logic.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -80,6 +81,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Critter.h" />
+    <ClInclude Include="CritterFactory.h" />
     <ClInclude Include="Grid.h" />
     <ClInclude Include="Logic.h" />
     <ClInclude Include="MapEditor.h" />

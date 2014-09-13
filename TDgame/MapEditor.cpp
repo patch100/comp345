@@ -44,6 +44,6 @@ void MapEditor::drawGrid()
 		}
 	};
 
-	SDL_RenderPresent(renderer);
+	
   
 }
