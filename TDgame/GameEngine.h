@@ -4,7 +4,7 @@
 #include "SDL.h"
 #include "Logic.h"
 #include "MapEditor.h"
-#include "menu.h"
+#include "Menu.h"
 #include "UserInput.h"
 #include "RenderObject.h"
 
