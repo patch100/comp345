@@ -22,7 +22,7 @@ int main(int argc, char* args[])
 	// Adding surface to window
 	screen = SDL_GetWindowSurface( window ); 
 	
-	
+	//Check 1
 	//Will need multiple SDL_Surface objects, each for each selection of the screen (2 at least)
 	
 	//Select Premade Map OR Create New Map (Load MapEditor);
