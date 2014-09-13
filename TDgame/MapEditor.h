@@ -1,6 +1,7 @@
 #pragma once
 #include "grid.h"
-
+#include "include/SDL.h"
+#include "include/SDL_surface.h"
 class MapEditor
 {
 public:
@@ -16,10 +17,35 @@ public:
 	//we can use a public method "drawGrid" to draw the grid for both the map editor, as well as for the game itself;
 	//it will take a grid.
 	
-	MapEditor();
+	MapEditor(SDL_Window * window,SDL_Renderer * renderer);
 	~MapEditor();
 	
 	
-	void drawGrid(Grid grid);
+	void drawGrid();
+
+	SDL_Window * window;
+	SDL_Renderer * renderer;
+
+	const int MAP_PADDING_LEFT = 10;
+
+	const int MAP_PADDING_TOP = 100;
+	
+	const int GRID_SIDE = 25;
+
+	//Every image needs a surface to load the image, and then a texture, which is the image rendered.
+	//So we need one for empty grid (towers only), and critter grid
+	SDL_Surface * emptygrid;
+	SDL_Texture * emptygrid_texture;
+
+	SDL_Surface * crittergrid;
+	SDL_Texture * crittergrid_texture;
+
+
+	
+
+	//the grid object;
+	Grid * grid;
+
+
 };
 

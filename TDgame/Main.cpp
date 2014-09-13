@@ -2,63 +2,88 @@
 #include "include/SDL.h"
 #include <stdio.h>
 #include "Logic.h"
-
+#include "MapEditor.h"
 
 int main(int argc, char* args[])
 {
-	bool quit = false;
-	SDL_Event event;
-	int x = 288;
-	int y = 208;
+
 
 	// init SDL
 
+	//WINDOW SIZE
+	const int SCREEN_WIDTH = 1000;
+	const int SCREEN_HEIGHT = 800;
+
+	//INITALIZING
 	SDL_Init(SDL_INIT_VIDEO);
-	SDL_Window * window = SDL_CreateWindow("Tower Defense",
-		SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 640, 480, 0);
+
+	//WINDOW WILL BE THE DRAWING SURFACE;
+	SDL_Window * window = SDL_CreateWindow("Tower Defense",	SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, 0);
+
+	//RENDERER is what makes images;
 	SDL_Renderer * renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
-	SDL_Surface * image = SDL_LoadBMP("spaceship.bmp");
-	SDL_Texture * texture = SDL_CreateTextureFromSurface(renderer,
-		image);
-	SDL_FreeSurface(image);
+	SDL_Surface * top_menu = SDL_LoadBMP("top_menu.bmp");
+	SDL_Texture * top_menu_texture = SDL_CreateTextureFromSurface(renderer,
+		top_menu);
 
+	SDL_FreeSurface(top_menu);
 	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+	SDL_RenderClear(renderer);
 
-	// handle events
+	SDL_Rect dstrect1 = { 0,0, 884, 84 };
 
+	SDL_RenderCopy(renderer, top_menu_texture, NULL, &dstrect1);
+	SDL_RenderPresent(renderer);
+
+	//Create the map editor;
+	MapEditor mapEditor(window, renderer);
+
+	//HERE WE INSERT A SDL_EVENT, SO YOU HAVE TO PICK BETWEEN PRESELECTED, OR READY MADE;
+	//EVENT IS BASED ON MOUSE BUTTON X/Y POS; 
+	//FROM THAT POINT, WE CAN PICK EITHER TO JUST GO ON TO THE GAME, OR LET THEM PICK THE MAP;
+
+	SDL_Event event;
+	bool quit = false;
+	
 	while (!quit)
 	{
 		SDL_WaitEvent(&event);
 
 		switch (event.type)
 		{
-		case SDL_QUIT:
+		case SDL_KEYDOWN:
 			quit = true;
 			break;
-		
-		case SDL_KEYDOWN:
-			 switch (event.key.keysym.sym)
-			 {
-			 case SDLK_LEFT:  x--; break;
-			 case SDLK_RIGHT: x++; break;
-			 case SDLK_UP:    y--; break;
-			 case SDLK_DOWN:  y++; break;
-			 }
-			 break;
+		}
+
 	}
 
 
-		SDL_Rect dstrect = { x, y, 64, 64 };
+	mapEditor.drawGrid();
 
-		SDL_RenderClear(renderer);
-		SDL_RenderCopy(renderer, texture, NULL, &dstrect);
-		SDL_RenderPresent(renderer);
-	}
 
+
+
+
+	//SDL_Surface * image = SDL_LoadBMP("spaceship.bmp");
+	//SDL_Texture * texture = SDL_CreateTextureFromSurface(renderer,
+		//image);
+	
+	
+
+	//SDL_Texture * overlap = SDL_CreateTextureFromSurface(renderer,		image);
+
+	//SDL_FreeSurface(image);
+
+	//SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+
+	// handle events
+
+	
 	// cleanup SDL
 
-	SDL_DestroyTexture(texture);
+	
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
 	SDL_Quit();
