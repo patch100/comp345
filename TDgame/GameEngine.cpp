@@ -18,7 +18,7 @@ GameEngine::GameEngine(SDL_Renderer * renderer)
 	renderObject->setRenderer();
 	menu->renderMenu();
 	mapEditor->drawGrid();
-	renderObject->renderFrame();
+	
 
 }
 

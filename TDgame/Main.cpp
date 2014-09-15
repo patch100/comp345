@@ -31,8 +31,8 @@ int main(int argc, char* args[])
 	
 	//RENDERER is what makes images;
 	SDL_Renderer * renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-
-
+	
+	
 	///MOVING EVERYTHING DOWN TO GAMEENGINE
 	GameEngine * gameEngine = new GameEngine(renderer);
 

@@ -60,9 +60,57 @@ void MapEditor::drawGrid()
 			else 
 				if (mapgrid[x][y])
 				SDL_RenderCopy(renderer, crittergrid_texture, NULL, &grid_rect);
-
+			SDL_RenderPresent(renderer);
 		}
 	};
+
+	bool test = false;
+
+	SDL_Event event;
+
+	while (!test)
+	{
+		SDL_WaitEvent(&event);
+
+		switch (event.type)
+		{
+		case SDL_MOUSEBUTTONDOWN:
+
+			double gridX = (event.motion.x - MAP_PADDING_LEFT) / (1 + GRID_SIDE)/1;
+			double gridY = (event.motion.y - MAP_PADDING_TOP) / (1 + GRID_SIDE)/1;
+
+			int mapX = gridX;
+			int mapY = gridY;
+			if (mapX < ROW_SIZE && mapY < COLUMN_SIZE){
+				mapgrid[mapX][mapY] = !mapgrid[mapX][mapY];
+
+				SDL_Rect grid_new = { mapX * GRID_SIDE + mapX + MAP_PADDING_LEFT, mapY* GRID_SIDE + mapY + MAP_PADDING_TOP, GRID_SIDE, GRID_SIDE };
+				if (!mapgrid[mapX][mapY]){
+
+					SDL_RenderCopy(renderer, emptygrid_texture, NULL, &grid_new);
+				}
+
+				else if (mapgrid[mapX][mapY])
+					SDL_RenderCopy(renderer, crittergrid_texture, NULL, &grid_new);
+
+
+				SDL_RenderPresent(renderer);
+
+
+			}
+
+			else {
+
+				//Few options here for pre-selecting
+				int z = 10;
+
+				int what = 0;
+			}
+
+		}
+
+
+	}
 
 
 
