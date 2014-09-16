@@ -2,16 +2,21 @@
 #define GAMEENGINE_H
 
 #include "SDL.h"
+#include "GUI.h"
 #include "Logic.h"
 #include "MapEditor.h"
 #include "Menu.h"
 #include "UserInput.h"
 #include "RenderObject.h"
 
-
 class GameEngine
 {
 public:
+
+	//Constant GUI elements
+
+
+
 
 	//Game Engine is responsible for all of these objects
 	Logic* logic;
@@ -30,8 +35,6 @@ public:
 
 
 
-	static const int SCREEN_WIDTH = 1000;
-	static const int SCREEN_HEIGHT = 800;
 
 	GameEngine(SDL_Renderer * renderer);
 	~GameEngine();

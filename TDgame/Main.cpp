@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <iostream>
 #include "GameEngine.h"
+#include "GUI.h"
 
 namespace  start{
 	SDL_Window * returnWindow(SDL_Window* win){
@@ -15,12 +16,11 @@ namespace  start{
 int main(int argc, char* args[])
 {
 
-
+	using namespace GUI;
 	// init SDL
 
 	//WINDOW SIZE
-	const int SCREEN_WIDTH = 1000;
-	const int SCREEN_HEIGHT = 800;
+
 
 	//INITALIZING
 	SDL_Init(SDL_INIT_VIDEO);
@@ -30,7 +30,7 @@ int main(int argc, char* args[])
 
 	
 	//RENDERER is what makes images;
-	SDL_Renderer * renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+	SDL_Renderer * renderer = SDL_CreateRenderer(window,-1, SDL_RENDERER_ACCELERATED);
 	
 	
 	///MOVING EVERYTHING DOWN TO GAMEENGINE

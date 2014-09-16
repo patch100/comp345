@@ -2,6 +2,8 @@
 #include "grid.h"
 #include "include/SDL.h"
 #include "include/SDL_surface.h"
+#include <fstream>
+
 class MapEditor
 {
 public:
@@ -10,16 +12,7 @@ public:
 
 	//CONSTANTS, VALUES IN PIXELS, FORMATTING AND SIZE
 
-	const int MAP_PADDING_LEFT = 10;
 
-	const int MAP_PADDING_TOP = 100;
-
-	const int GRID_SIDE = 25;
-
-	//MAP GRID SIZE
-	const int ROW_SIZE = 25;
-
-	const int COLUMN_SIZE = 25;
 
 	//Every image needs a surface to load the image, and then a texture, which is the image rendered.
 	//So we need one for empty grid (towers only), and critter grid
@@ -47,9 +40,20 @@ public:
 	MapEditor(SDL_Renderer * renderer);
 	~MapEditor();
 	
-	
+	//Basic Draw Grid
 	void drawGrid();
 
+	//Map Editor Selectors;
+
+	void makePremade();
+	void loadPremade();
+	void editGrid();
+
+	//Completing the selected Grid
+	void completeGridRender();
+
+	//This is called every frame, it draws the grid;
+	void renderCopyGrid();
 
 
 
