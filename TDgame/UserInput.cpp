@@ -19,16 +19,16 @@ int UserInput::mapEditorSelect(int flag)
 	bool test = false;
 
 	SDL_Event event;
-
+	int x, y;
 	while (!test)
 	{
 		SDL_WaitEvent(&event);
-
+		
 		switch (event.type)
 		{
 		case SDL_MOUSEBUTTONDOWN:
-			int x = event.motion.x;
-			int y = event.motion.y;
+			x = event.motion.x;
+			y = event.motion.y;
 
 			if (x > side_menu_offset_x && x < side_menu_offset_x + side_menu_icon_width + 1)
 			{
@@ -47,19 +47,18 @@ int UserInput::mapEditorSelect(int flag)
 				else if (
 					y > side_menu_offset_y + side_menu_icon_height * 2 + side_menu_gap * 2
 					&&
-					y < side_menu_offset_y + side_menu_icon_height * 3 + side_menu_gap * 2 + 1){
+					y < side_menu_offset_y + side_menu_icon_height * 3 + side_menu_gap * 2 + 1)
 						if (flag == 1)	return 3;
-					}
-				else return 4;
-					
-
+							else return 4;
 			}
 			else return 4;
+			break;
+		default:
+			return -1;
+			break;
 
 
 		}
-
-
-	}
+	}return -1;//SHOULD NOT END UP HERE, while loop should return something!
 }
 

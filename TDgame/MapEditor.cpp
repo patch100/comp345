@@ -86,8 +86,8 @@ void MapEditor::editGrid()
 			double gridX = (event.motion.x - MAP_PADDING_LEFT) / (1 + GRID_SIDE) / 1;
 			double gridY = (event.motion.y - MAP_PADDING_TOP) / (1 + GRID_SIDE) / 1;
 
-			int mapX = gridX;
-			int mapY = gridY;
+			int mapX = (int)gridX;
+			int mapY = (int)gridY;
 			if (mapX < ROW_SIZE && mapY < COLUMN_SIZE && mapX > -1 && mapY > -1 && event.motion.y > MAP_PADDING_TOP-1)
 			{
 				mapgrid[mapX][mapY] = !mapgrid[mapX][mapY];
