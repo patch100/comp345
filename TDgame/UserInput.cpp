@@ -46,11 +46,12 @@ int UserInput::mapEditorSelect(int flag)
 
 				else if (
 					y > side_menu_offset_y + side_menu_icon_height * 2 + side_menu_gap * 2
-					&& 
-					y < side_menu_offset_y + side_menu_icon_height * 3 + side_menu_gap * 2 + 1)
-
-					if (flag == 1)	return 3;
+					&&
+					y < side_menu_offset_y + side_menu_icon_height * 3 + side_menu_gap * 2 + 1){
+						if (flag == 1)	return 3;
+					}
 				else return 4;
+					
 
 			}
 			else return 4;
