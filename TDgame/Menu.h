@@ -43,6 +43,12 @@ public:
 
 	SDL_Surface * select_premade;
 	SDL_Texture * select_premade_texture;
+
+	SDL_Surface * select_start;
+	SDL_Texture * select_start_texture;
+
+	SDL_Surface * select_end;
+	SDL_Texture * select_end_texture;
 	
 	
 
@@ -52,6 +58,7 @@ public:
 	void renderMenu();
 	void renderEditOrPremade();
 	void renderPremadeMapSelection();
+	void renderStartEnd();
 
 };
 

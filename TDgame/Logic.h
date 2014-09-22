@@ -4,15 +4,37 @@
 #include "Tower.h"
 #include "Projectile.h"
 #include "critter.h"
-
+#include "CritterFactory.h"
 using namespace std;
 
 class Logic
 {
 public:
-	Logic(int ** grid, int startRow, int startColumn, int endRow, int endColumn);
+	Logic();
 	~Logic();
 
+	// Vectors for tower, projectile and critter
+	vector <Tower> towers;
+	vector <Projectile> projectiles;
+	vector <Critter> critters;
+
+	//Where the critters come from, where they end;
+	int startX;
+	int startY;
+	int endX;
+	int endY;
+
+	//Critter Factory. In charge of critters
+	CritterFactory critterFactory;
+
+	// Number of critters allowed to pass through the end until game is over;
+	int lives;
+
+	//CurrentLevel;
+	int currentLevel;
+
+	//MONEY$$$$
+	int money;
 	//Returns when game is over or not;
 	bool GameOver();
 
@@ -32,28 +54,7 @@ public:
 	//Generates each frame;
 	void frame();
 	
-	// Vectors for tower, projectile and critter
-	vector <Tower> towers;
-	vector <Projectile> projectiles;
-	vector <Critter> critters;
 
-	// Map passed from Map Editor, or from Premade Map
-	int ** map;
-
-	//Where the critters come from, where they end;
-	int startX;
-	int startY;
-	int endX;
-	int endY;
-
-	// Number of critters allowed to pass through the end until game is over;
-	int lives;
-
-	//CurrentLevel;
-	int currentLevel;
-
-	//MONEY$$$$
-	int money;
 
 };
 

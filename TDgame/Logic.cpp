@@ -1,17 +1,11 @@
 #include "Logic.h"
 
 
-Logic::Logic(int ** grid, int startRow, int startColumn, int endRow, int endColumn)
+Logic::Logic()
 {
+	//All Bitmaps will be in the Logic();
+	//CritterFactory critterFactory();
 
-	map = grid;
-
-	startX = startRow;
-	startY = startColumn;
-
-	endX = endRow;
-	endY = endColumn;
-	
 	money = 10;
 	currentLevel = 0;
 	
@@ -69,7 +63,14 @@ void Logic::render()
 
 void Logic::startLevel()
 {
+	//Set the level. Initalized at ZERO.
 	currentLevel++;
+	critterFactory.nextLevel();
+
+	while (lives > 0)
+	{
+		frame();
+	}
 
 	//set timer;
 
@@ -101,7 +102,12 @@ void Logic::frame()
 {
 	// if there is no more lives, then end the game
 	// if there is no more critters, the end the level endLevel();
-	
+
+	if (critterFactory.canCreate())
+	{
+		critters.push_back(critterFactory.createCritter());
+	}
+
 	calculate();
 	render();
 	

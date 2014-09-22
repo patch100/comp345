@@ -1,4 +1,5 @@
-#pragma once
+#ifndef CRITTER_H
+#define CRITTER_H
 class Critter
 {
 public:
@@ -26,4 +27,6 @@ public:
 	int direction;
 
 };
+
+#endif
 
