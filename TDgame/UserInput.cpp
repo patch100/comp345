@@ -53,9 +53,7 @@ int UserInput::mapEditorSelect(int flag)
 			}
 			else return 4;
 			break;
-		default:
-			return -1;
-			break;
+		
 
 
 		}

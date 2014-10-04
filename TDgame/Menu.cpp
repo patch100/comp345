@@ -71,6 +71,15 @@ Menu::Menu(SDL_Renderer * renderer)
 		select_premade);
 	SDL_FreeSurface(select_premade);
 
+	select_start = SDL_LoadBMP("graphics/start_icon.bmp");
+	select_start_texture = SDL_CreateTextureFromSurface(renderer,
+		select_start);
+	SDL_FreeSurface(select_start);
+
+	select_end = SDL_LoadBMP("graphics/end_icon.bmp");
+	select_end_texture = SDL_CreateTextureFromSurface(renderer,
+		select_end);
+	SDL_FreeSurface(select_end);
 
 
 	//Combined Menu
@@ -119,5 +128,13 @@ void Menu::renderEditOrPremade()
 	renderMenu();
 	SDL_RenderCopy(renderer, select_edit_texture, NULL, &map1_rect);
 	SDL_RenderCopy(renderer, select_premade_texture, NULL, &map2_rect);
+	SDL_RenderPresent(renderer);
+}
+
+void Menu::renderStartEnd()
+{
+	renderMenu();
+	SDL_RenderCopy(renderer, select_start_texture, NULL, &map1_rect);
+	SDL_RenderCopy(renderer, select_end_texture, NULL, &map2_rect);
 	SDL_RenderPresent(renderer);
 }

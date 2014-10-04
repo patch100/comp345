@@ -21,7 +21,6 @@ int main(int argc, char* args[])
 
 	//WINDOW SIZE
 
-
 	//INITALIZING
 	SDL_Init(SDL_INIT_VIDEO);
 
@@ -41,7 +40,7 @@ int main(int argc, char* args[])
 	//GAMEENGINE PHASE1, which is map selection
 	//GAMEENGINE PHASE2, which is the playing of the game
 	//GAMENEGINE PHASE3, REPEAT, GAMEOVER, ETC;
-	SDL_Delay(500);
+	SDL_Delay(5000);
 	SDL_Quit();
 
 	return 0;
