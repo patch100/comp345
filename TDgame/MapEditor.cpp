@@ -69,7 +69,6 @@ void MapEditor::drawGrid()
 			
 		}
 	};
-
 	SDL_RenderPresent(renderer);
 }
 
@@ -267,11 +266,11 @@ void MapEditor::pathTest(){
 
 	dirX = 1;
 	dirY = 0;
-	while (step < 250 && !(testX == 24) ){
+	while (step < 250 && !(testX == COLUMN_SIZE) && !(testY == ROW_SIZE) && !(testX == -1) && !(testY == -1) ){
 
 		
 		//LEFT TOP OUTER CORNER/RIGHT BOTTOM OUTER CORNER
-		if (testgrid[testX][testY] && testX > 0 && testX < 24 && testY > 0 && testY < 24){
+		if (testgrid[testX][testY] && testX > 0 && testX < COLUMN_SIZE && testY > 0 && testY < COLUMN_SIZE){
 
 			if (!testgrid[testX - 1][testY - 1] && !testgrid[testX + 1][testY + 1])
 
@@ -295,7 +294,7 @@ void MapEditor::pathTest(){
 			}
 
 			//LEFT TOP INNER CORNER, same as LEFT TOP OUTER CORNER;
-			else if ((testX - 2 > -1) && (testX + 1 < 25) && (testY - 2 > -1) && (testY + 1 < 25) && 
+			else if ((testX - 2 > -1) && (testX + 1 < COLUMN_SIZE) && (testY - 2 > -1) && (testY + 1 < ROW_SIZE) && 
 				!testgrid[testX + 1][testY + 1] && !testgrid[testX - 2][testY] && !(testgrid[testX][testY - 2])
 				
 				){
@@ -305,7 +304,7 @@ void MapEditor::pathTest(){
 			}
 
 			//RIGHT BOTTOM INNER CORNER, same as RIGHT BOTTOM OUTER
-			else if ((testX - 1 > -1) && (testX + 2 < 25) && (testY - 1 > -1) && (testY + 2 < 25)
+			else if ((testX - 1 > -1) && (testX + 2 < COLUMN_SIZE) && (testY - 1 > -1) && (testY + 2 < ROW_SIZE)
 				&& !testgrid[testX - 1][testY - 1] && !testgrid[testX + 2][testY] && !(testgrid[testX][testY + 2])
 				
 				){
@@ -315,7 +314,7 @@ void MapEditor::pathTest(){
 			}
 
 			//RIGHT TOP INNER, same as RIGHT TOP OUTER
-			else if ((testX - 1 > -1) && (testX + 2 < 25) && (testY - 2 > -1) && (testY + 1 < 25) &&
+			else if ((testX - 1 > -1) && (testX + 2 < COLUMN_SIZE) && (testY - 2 > -1) && (testY + 1 < ROW_SIZE) &&
 				!testgrid[testX - 1][testY + 1] && !testgrid[testX + 2][testY] && !(testgrid[testX][testY - 2])
 				
 				){
@@ -327,7 +326,7 @@ void MapEditor::pathTest(){
 			}
 
 			//LEFT BOTTOM INNER, same as LEFT BOTTOM OUTER
-			else if ((testX - 2 > -1) && (testX + 1 < 25) && (testY - 1 > -1) && (testY + 2 < 25) &&
+			else if ((testX - 2 > -1) && (testX + 1 < COLUMN_SIZE) && (testY - 1 > -1) && (testY + 2 < ROW_SIZE) &&
 				!testgrid[testX + 1][testY - 1] && !testgrid[testX - 2][testY] && !(testgrid[testX][testY + 2])
 				
 				){

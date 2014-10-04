@@ -23,11 +23,17 @@ GameEngine::GameEngine(SDL_Renderer * renderer)
 	//Renders basic menu and default grid
 	menu->renderMenu();
 	mapEditor->drawGrid();
-	
+	//mapEditor->renderToTextureGrid();
+	//mapEditor->renderGrid();
+	SDL_RenderPresent(renderer);
+
 	//Here input the userinput option, for the user to decide between picking one map or another map;
 	
 	//Phase 1, user decides between loading a premade map, or editting their own map
+	
 	menu->renderEditOrPremade();
+
+
 	switch (UserInput::mapEditorSelect(0))
 	{
 
@@ -39,7 +45,7 @@ GameEngine::GameEngine(SDL_Renderer * renderer)
 		mapEditor->editGrid(0);
 
 		//Turn map into file. Not used.
-		//mapEditor->makePremade();
+		mapEditor->makePremade();
 		break;
 
 	case 2:
@@ -84,18 +90,24 @@ GameEngine::GameEngine(SDL_Renderer * renderer)
 	//CREATE THE FINAL GRID;
 	mapEditor->renderToTextureGrid();
 
-
+	menu->renderMenu();
+	mapEditor->renderGrid();
+	
+	SDL_RenderPresent(renderer);
 	//FINISHED PREPARATION
 
 	//GAME STARTS HERE
-
+	
 	startLevel();
 	
 	//Render to texture
 	//mapEditor->completeGridRender();
 
 	///START THE GAME!
+
 }
+
+
 
 
 

@@ -3,12 +3,13 @@
 #include "include/SDL.h"
 #include "include/SDL_surface.h"
 #include <fstream>
+using namespace GUI;
 
 class MapEditor
 {
 public:
 
-	bool mapgrid[25][25];
+	bool mapgrid[ROW_SIZE][COLUMN_SIZE];
 
 	//CONSTANTS, VALUES IN PIXELS, FORMATTING AND SIZE
 
